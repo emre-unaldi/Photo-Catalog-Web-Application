@@ -1,0 +1,31 @@
+{
+  "name": "photo-catalog-web-application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emre-unaldi/Photo-Catalog-Web-Application.git"
+  },
+  "keywords": [
+    "photo",
+    "camera"
+  ],
+  "author": "Emre ÜNALDI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emre-unaldi/Photo-Catalog-Web-Application/issues"
+  },
+  "homepage": "https://github.com/emre-unaldi/Photo-Catalog-Web-Application#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "prettier": "2.7.1"
+  }
+}
