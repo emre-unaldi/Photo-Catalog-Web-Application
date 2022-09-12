@@ -1,16 +1,27 @@
 const express = require('express');
+const ejs = require('ejs');
+const path = require('path');
 const app = express();
 const PORT = 3000;
 
+// Template Engine 
+app.set("view engine", "ejs");
+
+// request ve response arasında olan herşey bir middlewaredir. Routes lar da dahil
+// middleware yazdıktan sonra diğer middleware geçmek için (req, res, next) next() yazılmalıdır.
+// Middlewares
+app.use(express.static('public'));
+
 app.get('/', (req,res) => {
+    res.render('index')
+});
 
-    const photo = {
-        id: "1",
-        name: "BeagleBone",
-        description: "Computer"
-    }
+app.get('/about', (req,res) => {
+    res.render('about')
+});
 
-    res.send(photo);
+app.get('/add', (req,res) => {
+    res.render('add')
 });
 
 app.listen(PORT, () => {
