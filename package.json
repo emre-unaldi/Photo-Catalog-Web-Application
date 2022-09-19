@@ -23,7 +23,8 @@
   "homepage": "https://github.com/emre-unaldi/Photo-Catalog-Web-Application#readme",
   "dependencies": {
     "ejs": "^3.1.8",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.19",
