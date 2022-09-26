@@ -3,9 +3,20 @@ const fs = require('fs');
 const path = require('path');
 
 exports.getAllPhotos = async (req, res) => {
-  const photo = await Photo.find({}).sort('-dateCreated');
+  const page = req.query.page || 1;
+  const photosPerPage = 3;
+
+  const totalPhotos = await Photo.find().countDocuments();
+
+  const photo = await Photo.find({})
+    .sort('-dateCreated')
+    .skip((page - 1) * photosPerPage)
+    .limit(photosPerPage);
+
   res.render('index', {
     photo,
+    current: page,
+    pages: Math.ceil(totalPhotos / photosPerPage),
   });
 };
 
@@ -47,10 +58,10 @@ exports.updatePhoto = async (req, res) => {
 exports.deletePhoto = async (req, res) => {
   const photo = await Photo.findOne({ _id: req.params.id });
   let deletedImage = __dirname + '/../public' + photo.image;
-  
+
   fs.unlinkSync(deletedImage, (err) => {
-    if(err) console.log(err);
-      console.log('File Deleted !');
+    if (err) console.log(err);
+    console.log('File Deleted !');
   });
   await Photo.findByIdAndRemove(req.params.id);
   res.redirect('/');
